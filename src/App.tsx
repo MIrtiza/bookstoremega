@@ -1,7 +1,7 @@
 // App.tsx
 
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route,Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WebsiteHome from './website/pages';
 import ProductDetail from './website/pages/Detail';
 import Cart from './website/pages/Cart';
@@ -14,7 +14,7 @@ import DashboardHome from './dashboard/pages';
 import DashboardLogin from './dashboard/pages/Login';
 
 const App: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false); // Assuming you have a state to track login status
+  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false); // Assuming you have a state to track login status
   
   return (
     <Router>
@@ -27,7 +27,7 @@ const App: React.FC = () => {
         <Route path="/favorites" element={<Favorites />} />
         
         {/* Protected Dashboard Route */}
-        <Route path="/dashboard/*" element={<DashboardRoutes isLoggedIn={isLoggedIn} />} />
+        <Route path="/dashboard/*" element={<DashboardRoutes />} />
         
         {/* 404 Not Found */}
         <Route path="*" element={<NotFound />} />
@@ -37,7 +37,8 @@ const App: React.FC = () => {
 };
 
 // Define a separate component for dashboard routes
-const DashboardRoutes: React.FC<{ isLoggedIn: boolean }> = ({ isLoggedIn }) => {
+const DashboardRoutes: React.FC = () => {
+  // console.log(isLoggedIn)
   // if (!isLoggedIn) {
   //   return <Navigate to="/dashboard/login" />    ;
   // }
