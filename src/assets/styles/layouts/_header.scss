@@ -1,0 +1,127 @@
+
+.navbar {
+    padding: 10px 0;
+    background-color: $darkBlack;
+    position: relative;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    .imgWrap{
+        width: 60px;
+        height: 40px;
+        img{
+            width: 100%;
+    
+        }
+    }
+    span{
+        display: inline-block;
+        margin-left: 8px;
+        font-size: 20px;
+        text-transform: uppercase;
+        color: white;
+        &::first-letter{
+            color: #7cc6ed;
+            font-size: 34px;
+        }
+    }
+   
+  }
+  
+  .menu-icon {
+    display: none;
+  }
+  
+  .nav-elements {
+    display: flex;
+    align-items: center;
+    ul{
+        padding: 0;
+        margin: 0;
+        li{
+            a{
+
+                color: white;
+                svg{
+                    color: white;
+                    font-size: 26px;
+                }
+                
+            }
+        }
+    }
+    .profileWrap{
+        .imgWrap{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid $lightGrey;
+            background-size: 100% 100%;
+        }
+    }
+  }
+  
+  .nav-elements ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+  
+  .nav-elements ul li {
+    margin-right: 60px;
+  }
+  
+  .nav-elements ul a {
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+  }
+  
+  .nav-elements ul a.active {
+    color: #574c4c;
+    font-weight: 500;
+    position: relative;
+  }
+  
+ 
+  
+  @media (max-width: 768px) {
+    
+  }
+  
+  @media (max-width: 600px) {
+    .menu-icon {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .nav-elements {
+      position: absolute;
+      right: 0;
+      top: 72px;
+      background-color: $darkBlack;
+      width: 0px;
+      height: calc(100vh - 72px);
+      transition: all 0.3s ease-in;
+      overflow: hidden;
+      flex-direction: column;
+      padding: 0 30px;
+    }
+  
+    .nav-elements.active {
+      width: 40%;
+    }
+  
+    .nav-elements ul {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .nav-elements ul li {
+      margin-right: unset;
+      margin: 22px 0;
+    }
+  }
+  
