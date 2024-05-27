@@ -1,0 +1,88 @@
+
+.dashboardSec{
+    background: #f3f3fd;
+    height: 100vh;
+     .container-fluid, .row, div[class^="col"]{
+        height: 100%;
+    }
+    aside{
+        padding: 50px 20px;
+        border-right: 1px solid lightblue;
+    }
+    .contentWrap{
+        padding: 50px 40px;
+        
+    }
+}
+.dashboardLogo{
+    width: 120px;
+    margin-bottom: 120px;
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+.contentHead{       
+    margin-bottom: 50px;
+}
+.dashboardSide{
+    flex-direction: column;
+    .nav-item{
+        .nav-link{
+            text-align: left;
+            & > .dropdown{
+                // height: 0;
+                // visibility: hidden;
+                // opacity: 0;
+                transition: 0.25s ease-in-out;
+                & > .nav{
+                   flex-direction: column;
+                }
+            }
+            // &.actives{
+            //     & > .dropdown{
+            //         height: auto;
+            //         visibility: visible;
+            //         opacity: 1;
+            //     }
+            // }
+        }
+    }
+}
+
+
+
+.statsGrid{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    padding: 0;
+    list-style: none;
+    margin: 0 -16px;
+    li{
+        width: 33.33%;
+        padding: 0 16px;
+    }
+    .grid{
+      
+        border-radius: 15px;
+        background: lightskyblue;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        strong{
+            font-weight: 600;
+            font-size: 20px;
+
+        }
+        span{
+            font-size: 16px;
+        }
+    }
+}
+
+.summaryRight{
+    background: #fff;
+}
