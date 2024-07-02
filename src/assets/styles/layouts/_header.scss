@@ -1,7 +1,7 @@
 
 .navbar {
     padding: 10px 0;
-    background-color: $darkBlack;
+    background-color: $darkGrey;
     position: relative;
   }
   
@@ -23,7 +23,7 @@
         text-transform: uppercase;
         color: white;
         &::first-letter{
-            color: #7cc6ed;
+            color: $purple;
             font-size: 34px;
         }
     }
@@ -34,6 +34,63 @@
     display: none;
   }
   
+  .search-bar{
+    width: rem(500);
+    @include ForMarginPadding(padding, rem(5), rem(60), rem(5), rem(120));
+    background-color: white;
+    border-radius: rem(5);
+    position: relative;
+    input{
+      width: 100%;
+      border: 0;
+      font-size: 12px;
+      &:focus, &:active{
+        outline: 0;
+      }
+    }
+    .menudropdown{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-right: 1px solid  $purple;;
+      
+      button{
+        height: 100%;
+        border: 0;
+        background: transparent;
+        padding: 0 30px 0 10px;
+        span{
+          display: inline-block;
+          @include ForMarginPadding(margin, rem(0), rem(8), rem(0), rem(8));
+          font-size: 12px;
+        }
+      }
+      .menuIcon{
+        color: $purple;
+      }
+      .arrowIcon{
+        font-size: rem(12);
+        position: absolute;
+        @include RightToLeft(10px);
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        color: $purple;
+      }
+    }
+    .searchbtn{
+      border: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      @include ForMarginPadding(padding, rem(0), rem(15), rem(0), rem(15));
+      svg{
+        color: $purple;
+      }
+    }
+  }
   .nav-elements {
     display: flex;
     align-items: center;
@@ -101,17 +158,20 @@
       position: absolute;
       right: 0;
       top: 72px;
-      background-color: $darkBlack;
+      background-color: $darkGrey;
       width: 0px;
       height: calc(100vh - 72px);
       transition: all 0.3s ease-in;
       overflow: hidden;
       flex-direction: column;
-      padding: 0 30px;
+      opacity: 0;
+      visibility: hidden;
     }
   
     .nav-elements.active {
       width: 40%;
+      opacity: 1;
+      visibility: visible;
     }
   
     .nav-elements ul {

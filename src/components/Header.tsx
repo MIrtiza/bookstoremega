@@ -5,8 +5,10 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookBookmark,
-  faBell,
+  faChevronDown,
   faCartShopping,
+  faSearch,
+  faWindowRestore,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
@@ -23,6 +25,19 @@ const Header = () => {
           </div>
           <span>BookStores</span>
         </div>
+        <div className="search-bar">
+          <div className="menudropdown">
+            <button className="menubtn">
+              <FontAwesomeIcon icon={faWindowRestore} className="menuIcon" />
+              <span>Menu</span>
+              <FontAwesomeIcon icon={faChevronDown} className="arrowIcon" />
+            </button>
+          </div>
+          <input type="text" placeholder="Search Books | Author | genre" />
+          <button className="searchbtn">
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </div>
         <div className="menu-icon" onClick={handleShowNavbar}>
           <Hamburger />
         </div>
@@ -33,11 +48,7 @@ const Header = () => {
                 <FontAwesomeIcon icon={faBookBookmark} />
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/blogs">
-                <FontAwesomeIcon icon={faBell} />
-              </NavLink>
-            </li>
+
             <li>
               <NavLink to="/projects">
                 <FontAwesomeIcon icon={faCartShopping} />

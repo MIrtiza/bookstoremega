@@ -1,6 +1,10 @@
 @import "vendors/bootstrap";
-@import "theme/variables";
-@import "layouts/dashboard";
+@import "abstracts/rem-to-px";
+@import "abstracts/variables";
+@import "abstracts/mixin";
 
+@import "layouts/dashboard";
 @import "layouts/main";
 @import "layouts/header";
+@import "layouts/footer";
+@import "layouts/productListing";

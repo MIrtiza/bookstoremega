@@ -1,0 +1,94 @@
+@mixin transitions($speed: 0.5s) {
+  -webkit-transition: all $speed ease-in-out;
+  -moz-transition: all $speed ease-in-out;
+  -o-transition: all $speed ease-in-out;
+  transition: all $speed ease-in-out;
+}
+
+@mixin borderRadius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -o-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin scale($scale) {
+  -webkit-transform: scale($scale);
+  -moz-transform: scale($scale);
+  -ms-transform: scale($scale);
+  -o-transform: scale($scale);
+  transform: scale($scale);
+}
+
+@mixin rtl {
+  html[lang="ar"] & {
+    @content;
+  }
+}
+
+
+//use: @include mprl(margin,left,right,30px);
+//use: @include mprl(margin,right,left,30px);
+//output: margin-left: 30px;
+//output: margin-right: 30px;
+@mixin mprl($property,$positionL, $positionR, $value) {
+  [dir=ltr] &{
+    #{$property}-#{$positionL}: $value;
+  }
+  [dir=rtl] & {
+    #{$property}-#{$positionR}: $value;
+  }
+}
+
+
+//use: @include leftToRight(30px);
+//output: left: 30px;
+@mixin leftToRight($value){
+  [dir=ltr] &{
+    left: $value;
+  }
+  [dir=rtl] &{
+    right: $value;
+  }
+}
+
+//use: @include RightToLeft(30px);
+//output: right: 30px;
+@mixin RightToLeft($value){
+  [dir=ltr] &{
+    right: $value;
+  }
+  [dir=rtl] &{
+    left: $value;
+  }
+}
+
+
+
+//use: @include ForMarginPadding(padding,0,10px,0,20px);
+// use: @include ForMarginPadding(margin,0,10px,0,20px);
+//output: padding: 0,10px,0,20px;
+//output: margin: 0,10px,0,20px;
+@mixin ForMarginPadding($property, $top, $right, $bottom, $left) {
+  [dir=ltr] & {
+    #{$property}: $top $right $bottom $left;
+  }
+  [dir=rtl] & {
+    #{$property}: $top $left $bottom $right;
+  }
+}
+
+
+
+//for text-align: left or right;
+//use: @include ForDirection(text-align, left, right);
+//output: text-align:left; in EN, text-align:right;
+@mixin ForDirection($property, $ltr-value, $rtl-value) {
+  [dir=ltr] & {
+    #{$property}: $ltr-value;
+  }
+  [dir=rtl] & {
+    #{$property}: $rtl-value;
+  }
+}

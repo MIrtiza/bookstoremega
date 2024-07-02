@@ -1,0 +1,96 @@
+
+
+
+
+
+
+
+$fontFamilyBase: 'Gilmer', Arial, sans-serif;
+$fontFamilyBaseAr: 'Gilmer', Arial, sans-serif;
+$font-family-base: $fontFamilyBase, sans-serif;
+$headings-font-family: $fontFamilyBase, sans-serif;
+
+
+/// Bootstrap overrides
+///
+/// Copy variables from `_variables.scss` to this file to override default values
+/// without modifying source files.
+
+/// Start Of Website Color Branding
+
+$primary: #C82B64;
+$secondary: #13A19A;
+$lightGrey: #fef7e5;
+$borderColor: #B9BCC1;
+$darkGrey: #292828;
+$grey: #231F20;
+$danger: #dc3545;
+$skyBlue: #7cc6ed;
+$purple: #8170f2;
+$white: #ffffff;
+$black: #000000;
+
+/// begin customization
+$theme-colors: ();
+/// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+        (
+                "primary": $primary,
+                "secondary": $secondary,
+                "borderColor": $borderColor,
+                "lightGrey": $lightGrey,
+                "darkGrey": $darkGrey,
+                "danger": $danger,
+                "grey": $grey,
+                "white": $white,
+                "black": $black,
+        ),
+        $theme-colors
+);
+
+
+$btn-border-radius: 30px;
+$input-border-radius: 5px;
+$btn-padding-y: 0;
+$btn-padding-x: 0;
+$btn-border-width: 1px;
+$btn-box-shadow: none;
+$input-bg: var(--surface2);
+$input-color: var(--text1);
+
+$input-border-radius: 5px;
+$input-border-color: var(--surface4);
+$input-border-width: 1px;
+
+
+
+$grid-gutter-width: 1.875rem;
+
+
+
+
+$h1-font-size: rem(90);
+$h2-font-size: rem(60); //done
+$h3-font-size: rem(28);
+$h4-font-size: rem(24); // done
+$h5-font-size: rem(20); // done
+$h6-font-size: rem(20); //done
+$lead-font-size: rem(36);
+$headings-margin-bottom: 0px;
+
+$headings-color: var(--text1);
+
+//Card Settings
+$card-border-width: none;
+$card-spacer-y: 0;
+$card-spacer-x: 0;
+$card-border-radius: 7px;
+$card-bg: var(--surface2);
+$card-color: var(--text1);
+
+//Table Settings
+$table-cell-padding-y: rem(15);
+$table-cell-padding-x: rem(20);
+$table-cell-vertical-align: middle;
+$table-border-color: var(--surface4);
+$table-color: var(--text1);

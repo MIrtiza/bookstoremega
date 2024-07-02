@@ -1,0 +1,35 @@
+.productlisting-sec{
+    @include ForMarginPadding(padding, rem(48), rem(0), rem(48), rem(0));
+    .row{
+        width: 100%;
+    }
+}
+
+.productGrid{
+    .head{
+        h2{
+            @include ForMarginPadding(margin, rem(0), rem(0), rem(32), rem(0));
+        }
+    }
+}
+
+.innerFilter{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    @include ForMarginPadding(padding, rem(10), rem(10), rem(10), rem(10));
+    border: 1px solid $borderColor;
+    border-radius: 4px;
+}
+.filterbyDate,.ViewChangeList{
+    list-style: none;
+    @include ForMarginPadding(padding, rem(0), rem(0), rem(0), rem(0));
+    @include ForMarginPadding(margin, rem(0), rem(0), rem(0), rem(0));
+    display: flex;
+    align-items: center;
+    button{
+        background: transparent;
+        border: 0;
+        @include ForMarginPadding(padding, rem(0), rem(10), rem(0), rem(10));
+    }
+}
