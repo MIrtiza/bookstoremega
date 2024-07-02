@@ -46,7 +46,9 @@ const WebsiteHome: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="gridStart"></div>
+                <div className="gridStart">
+                  <div className="itemBox"></div>
+                </div>
               </div>
             </Col>
           </Row>
