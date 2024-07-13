@@ -7,17 +7,8 @@ interface CardBoxProps {
   product: ProductData;
 }
 export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
-  const {
-    title,
-    plot,
-    price,
-    author,
-    bookUrl,
-    category,
-    images, // this is an array, i want first image set in card.img
-    save,
-    rating,
-  } = product ?? {};
+  const { title, price, author, bookUrl, category, save, rating } =
+    product ?? {};
 
   return (
     <>
@@ -33,6 +24,8 @@ export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
             {save ? <TurnedIn /> : <TurnedInNot />}
           </div>
           <Card.Title> {title} </Card.Title>
+          <Card.Text>{author}</Card.Text>
+          <Card.Text>{price}</Card.Text>
           <Card.Text>{category}</Card.Text>
           <Card.Text>{rating}</Card.Text>
         </Card.Body>

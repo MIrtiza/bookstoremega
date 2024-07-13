@@ -46,7 +46,7 @@
     position: relative;
     width: 33.33%;
     @include ForMarginPadding(margin, rem(0), rem(0), rem(48), rem(0));
-    @include ForMarginPadding(padding, rem(0), rem(15), rem(32), rem(15));
+    @include ForMarginPadding(padding, rem(0), rem(20), rem(32), rem(20));
 }
 .cardBook{
     display: flex;
@@ -55,14 +55,35 @@
 }
 .card-body{
     width: 50%;
+    position: relative;
+    @include ForMarginPadding(padding, rem(0), rem(32), rem(15), rem(15));
 }
+.saveIcon{
+    position: absolute;
+    @include RightToLeft(10px);
+    top: rem(0);
+    z-index: 1;
+}
+.pageflip {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    bottom:1px;
+    right: 10px;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: linear-gradient(to right bottom,#c3c2c2 50%,#ecebeb 51%);
+    transition: all 0.3s;
+  }
 .bookBg{
     height: rem(280);
     width: 50%;
     background-image: url('https://i.ibb.co/G9Nv4Jv/bookbg.png');
     background-size: 100%;
     background-repeat: no-repeat;
- 
+    position: relative;
     img{
         width: 95%;
         height: 100%;
@@ -81,7 +102,7 @@
     position: absolute;
     bottom: 0;
     left: rem(-10);
-    width:100%;
+    width:95%;
     height: rem(30);
     background-image: url('https://i.ibb.co/4P2MDNm/reck.png') ;
     background-repeat: no-repeat;
