@@ -56,13 +56,37 @@
 .card-body{
     width: 50%;
     position: relative;
-    @include ForMarginPadding(padding, rem(0), rem(32), rem(15), rem(15));
+    @include ForMarginPadding(padding, rem(0), rem(38), rem(15), rem(15));
+
+    .authorTxt{
+        font-size: rem(15);
+        color: $lightPurple;
+        text-shadow: 0px 0px 1px $black;
+        display: block;
+        // @include ForMarginPadding(margin, rem(0), rem(0), rem(15), rem(0));
+
+    }
+    .priceTxt{
+        font-size: rem(22);
+        color: $purple;
+        font-weight: 600;
+    }
 }
 .saveIcon{
     position: absolute;
-    @include RightToLeft(10px);
+    @include RightToLeft(0);
     top: rem(0);
     z-index: 1;
+    width: rem(32);
+    height: rem(32);
+    border-radius: rem(12);
+    background: $purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    svg{
+        color: $white;
+    }
 }
 .pageflip {
     display: block;
@@ -78,7 +102,7 @@
     transition: all 0.3s;
   }
 .bookBg{
-    height: rem(280);
+    height: rem(260);
     width: 50%;
     background-image: url('https://i.ibb.co/G9Nv4Jv/bookbg.png');
     background-size: 100%;

@@ -7,7 +7,7 @@ interface CardBoxProps {
   product: ProductData;
 }
 export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
-  const { title, price, author, bookUrl, category, save, rating } =
+  const { title, price, author, bookUrl, category, save, ratings } =
     product ?? {};
 
   return (
@@ -21,13 +21,18 @@ export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
 
         <Card.Body>
           <div className="saveIcon">
-            {save ? <TurnedIn /> : <TurnedInNot />}
+            {save ? (
+              <TurnedIn fontSize="small" />
+            ) : (
+              <TurnedInNot fontSize="small" />
+            )}
           </div>
-          <Card.Title> {title} </Card.Title>
-          <Card.Text>{author}</Card.Text>
-          <Card.Text>{price}</Card.Text>
+          <h5> {title} </h5>
+          <span className="authorTxt">{author}</span>
           <Card.Text>{category}</Card.Text>
-          <Card.Text>{rating}</Card.Text>
+          <span className="priceTxt">Rs. {price}</span>
+
+          <Card.Text>{ratings}</Card.Text>
         </Card.Body>
       </Card>
     </>

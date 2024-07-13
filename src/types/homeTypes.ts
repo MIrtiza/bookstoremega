@@ -8,7 +8,7 @@
     price?: string;
     save?: string;
     title?: string;
-    rating?: number;
+    ratings?: number;
   };
 
 
