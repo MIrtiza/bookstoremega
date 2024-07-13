@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { ProductData } from "../types/homeTypes";
 import { TurnedInNot, TurnedIn } from "@mui/icons-material";
 
@@ -32,7 +32,11 @@ export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
           <Card.Text>{category}</Card.Text>
           <span className="priceTxt">Rs. {price}</span>
 
-          <Card.Text>{ratings}</Card.Text>
+          {/* <Card.Text>{ratings}</Card.Text> */}
+          <div className="buttonContain">
+            {/* <Button className="btn btnPrimary">Add to Cart</Button> */}
+            {/* <Button className="btn btnWhite">Buy Now</Button> */}
+          </div>
         </Card.Body>
       </Card>
     </>
