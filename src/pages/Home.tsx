@@ -1,9 +1,23 @@
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../Layout/Layout";
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBorderAll, faBars } from "@fortawesome/free-solid-svg-icons";
+import { getProductData } from "../api/index";
+import { CardBox } from "../components/CardBox";
+import { ProductData } from "../types/homeTypes";
+
 const WebsiteHome: React.FC = () => {
+  const [productData, setProductData] = useState<ProductData[]>([]);
+  console.log(productData);
+  const getData = async () => {
+    const _data = await getProductData();
+
+    setProductData(_data.BookData);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <Layout>
       <section className="productlisting-sec">
@@ -47,7 +61,15 @@ const WebsiteHome: React.FC = () => {
                 </div>
 
                 <div className="gridStart">
-                  <div className="itemBox"></div>
+                  {productData?.length > 0 &&
+                    productData?.map((product, ind) => {
+                      return (
+                        <div className="itemBox" key={ind}>
+                          {product && <CardBox product={product} />}
+                          <div className="reckBg" />
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
             </Col>

@@ -7,6 +7,7 @@
 
 .productGrid{
     .head{
+        @include ForMarginPadding(margin, rem(0), rem(0), rem(48), rem(0));
         h2{
             @include ForMarginPadding(margin, rem(0), rem(0), rem(32), rem(0));
         }
@@ -32,4 +33,57 @@
         border: 0;
         @include ForMarginPadding(padding, rem(0), rem(10), rem(0), rem(10));
     }
+}
+
+
+
+.gridStart{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.itemBox{
+    position: relative;
+    width: 33.33%;
+    @include ForMarginPadding(margin, rem(0), rem(0), rem(48), rem(0));
+    @include ForMarginPadding(padding, rem(0), rem(15), rem(32), rem(15));
+}
+.cardBook{
+    display: flex;
+    flex-direction: row;
+    border: 0;
+}
+.card-body{
+    width: 50%;
+}
+.bookBg{
+    height: rem(280);
+    width: 50%;
+    background-image: url('https://i.ibb.co/G9Nv4Jv/bookbg.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+ 
+    img{
+        width: 95%;
+        height: 100%;
+        box-shadow: 3px 5px 18px 0px #7f7c7c;
+    }
+    &:hover{
+        .pageflip{
+            width: 40px;
+            height: 40px;
+            box-shadow: -5px -5px 40px rgba(0,0,0,1);
+        }
+    }
+}
+
+.reckBg{
+    position: absolute;
+    bottom: 0;
+    left: rem(-10);
+    width:100%;
+    height: rem(30);
+    background-image: url('https://i.ibb.co/4P2MDNm/reck.png') ;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
