@@ -9,15 +9,18 @@ import { ProductData } from "../types/homeTypes";
 import { OptionType } from "../types/filtersTypes";
 import SelectDropdown from "../components/SelectDropdown";
 import { Slider } from "@mui/material";
+import { ActionMeta, MultiValue, SingleValue } from "react-select";
 
 const WebsiteHome: React.FC = () => {
   const [productData, setProductData] = useState<ProductData[]>([]);
   const [authorOptions, setAuthorOptions] = useState<OptionType[]>([]);
-  const [selectedAuthors, setSelectedAuthors] = useState<OptionType[]>([]);
+  const [selectedAuthors, setSelectedAuthors] = useState<
+    MultiValue<OptionType>
+  >([]);
   const [categoryOptions, setCategoryOptions] = useState<OptionType[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<OptionType[]>(
-    []
-  );
+  const [selectedCategories, setSelectedCategories] = useState<
+    MultiValue<OptionType>
+  >([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
 
   console.log(productData);
@@ -59,12 +62,26 @@ const WebsiteHome: React.FC = () => {
     getData();
   }, []);
 
-  const handleAuthorChange = (selectedOptions: OptionType[] | null) => {
-    setSelectedAuthors(selectedOptions || []);
+  const handleAuthorChange = (
+    newValue: MultiValue<OptionType> | SingleValue<OptionType>,
+    actionMeta: ActionMeta<OptionType>
+  ) => {
+    if (newValue === null || !Array.isArray(newValue)) {
+      setSelectedAuthors([]);
+    } else {
+      setSelectedAuthors(newValue as MultiValue<OptionType>);
+    }
   };
 
-  const handleCategoryChange = (newValue: OptionType[] | null) => {
-    setSelectedCategories(newValue || []);
+  const handleCategoryChange = (
+    newValue: MultiValue<OptionType> | SingleValue<OptionType>,
+    actionMeta: ActionMeta<OptionType>
+  ) => {
+    if (newValue === null || !Array.isArray(newValue)) {
+      setSelectedCategories([]);
+    } else {
+      setSelectedCategories(newValue as MultiValue<OptionType>);
+    }
   };
 
   const handlePriceChange = (event: Event, newValue: number | number[]) => {

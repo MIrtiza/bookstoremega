@@ -4,9 +4,9 @@ import { OptionType } from "../types/filtersTypes";
 
 interface CustomSelectProps {
   options: OptionType[];
-  value: OptionType | null;
+  value: MultiValue<OptionType> | SingleValue<OptionType> | null; // Adjust to handle both single and multi values
   onChange: (
-    newValue: SingleValue<OptionType> | MultiValue<OptionType>,
+    newValue: MultiValue<OptionType> | SingleValue<OptionType>,
     actionMeta: ActionMeta<OptionType>
   ) => void;
   placeholder?: string;
