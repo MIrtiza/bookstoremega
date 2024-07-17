@@ -5,6 +5,17 @@
     }
 }
 
+.filterOptions{
+    & > h2{
+        @include ForMarginPadding(margin, rem(0), rem(0), rem(32), rem(0));
+    }
+}
+.filterform{
+    @include ForMarginPadding(margin, rem(0), rem(0), rem(32), rem(0));
+}
+.MuiSlider-colorPrimary{
+    color: $purple !important;
+}
 .productGrid{
     .head{
         @include ForMarginPadding(margin, rem(0), rem(0), rem(48), rem(0));
@@ -32,7 +43,17 @@
         background: transparent;
         border: 0;
         @include ForMarginPadding(padding, rem(0), rem(10), rem(0), rem(10));
+        color: $borderColor;
     }
+  li{
+    
+    &.active{
+        button{
+         font-weight: 700;
+         color: $black;
+        }
+     }
+  }
 }
 
 
@@ -57,7 +78,14 @@
     width: 50%;
     position: relative;
     @include ForMarginPadding(padding, rem(0), rem(38), rem(15), rem(15));
-
+    .titleTxt{
+        overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
     .authorTxt{
         font-size: rem(15);
         color: $lightPurple;
@@ -70,6 +98,8 @@
         font-size: rem(22);
         color: $purple;
         font-weight: 600;
+        display: block;
+        @include ForMarginPadding(margin, rem(0), rem(0), rem(15), rem(0));
     }
 }
 .saveIcon{

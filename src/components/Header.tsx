@@ -11,11 +11,15 @@ import {
   faWindowRestore,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { useSelector } from "react-redux";
+import { RootState } from "../redux-store/store";
+
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
+  const cart = useSelector((state: RootState) => state.cart);
   return (
     <nav className="navbar">
       <div className="container">
@@ -46,12 +50,14 @@ const Header = () => {
             <li>
               <NavLink to="/">
                 <FontAwesomeIcon icon={faBookBookmark} />
+                <span>0</span>
               </NavLink>
             </li>
 
             <li>
               <NavLink to="/projects">
                 <FontAwesomeIcon icon={faCartShopping} />
+                <span> {cart.totalQuantity} </span>
               </NavLink>
             </li>
           </ul>

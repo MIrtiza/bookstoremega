@@ -100,10 +100,25 @@
         li{
             a{
 
-                color: white;
+                color: $white;
+                position: relative;
                 svg{
-                    color: white;
+                    color: $white;
                     font-size: 26px;
+                }
+                span{
+                  color: $white;
+                  position: absolute;
+                  top: rem(-10);
+                  @include RightToLeft(-16px);
+                  font-size: rem(12);
+                  background: $danger;
+                  width: rem(20);
+                  height: rem(20);
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
                 }
                 
             }

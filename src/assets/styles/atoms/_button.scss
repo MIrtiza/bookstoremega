@@ -3,15 +3,13 @@
     padding: rem(5) rem(2);
     border: 1px solid $black;
     font-size: rem(12) !important;
-    font-family: 'Goudy Bookletter 1911', serif;
     color: $white !important;
     border-radius: rem(4);
     display: block;
     text-decoration: none;
     text-align: center;
-    &.btnPrimary{
-        font-family: 'Goudy Bookletter 1911', serif;
-        background-color: $primary;
+    &.btn-purple{
+        background-color: $purple;
         border: 1px solid $white;
         &.btnradius{
             padding: rem(10) rem(2);

@@ -5,7 +5,7 @@
     category?: string;
     images?: Array<string>;
     plot?: string;
-    price?: string;
+    price?: number;
     save?: string;
     title?: string;
     ratings?: number;

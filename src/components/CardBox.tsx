@@ -1,15 +1,29 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { ProductData } from "../types/homeTypes";
-import { TurnedInNot, TurnedIn } from "@mui/icons-material";
+import { TurnedInNot, TurnedIn, ShoppingCart } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux-store/features/cartSlice";
+import StarRating from "./StarRating";
 
 interface CardBoxProps {
   product: ProductData;
 }
 export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
-  const { title, price, author, bookUrl, category, save, ratings } =
-    product ?? {};
+  const {
+    title,
+    price,
+    author,
+    bookUrl,
+    category,
+    save,
+    ratings = 0,
+  } = product ?? {};
+  const dispatch = useDispatch();
 
+  const handleAddToCart = () => {
+    dispatch(addItem(product));
+  };
   return (
     <>
       <Card className="cardBook">
@@ -27,15 +41,16 @@ export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
               <TurnedInNot fontSize="small" />
             )}
           </div>
-          <h5> {title} </h5>
+          <h6 className="titleTxt"> {title} </h6>
           <span className="authorTxt">{author}</span>
           <Card.Text>{category}</Card.Text>
+          <StarRating ratings={ratings} />
           <span className="priceTxt">Rs. {price}</span>
 
-          {/* <Card.Text>{ratings}</Card.Text> */}
           <div className="buttonContain">
-            {/* <Button className="btn btnPrimary">Add to Cart</Button> */}
-            {/* <Button className="btn btnWhite">Buy Now</Button> */}
+            <Button className="btn btn-purple" onClick={handleAddToCart}>
+              <ShoppingCart style={{ fontSize: 15 }} /> Add to Cart
+            </Button>
           </div>
         </Card.Body>
       </Card>
