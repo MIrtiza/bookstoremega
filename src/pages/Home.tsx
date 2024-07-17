@@ -64,7 +64,7 @@ const WebsiteHome: React.FC = () => {
 
   const handleAuthorChange = (
     newValue: MultiValue<OptionType> | SingleValue<OptionType>,
-    actionMeta: ActionMeta<OptionType>
+    _actionMeta: ActionMeta<OptionType>
   ) => {
     if (newValue === null || !Array.isArray(newValue)) {
       setSelectedAuthors([]);
@@ -75,7 +75,7 @@ const WebsiteHome: React.FC = () => {
 
   const handleCategoryChange = (
     newValue: MultiValue<OptionType> | SingleValue<OptionType>,
-    actionMeta: ActionMeta<OptionType>
+    _actionMeta: ActionMeta<OptionType>
   ) => {
     if (newValue === null || !Array.isArray(newValue)) {
       setSelectedCategories([]);
@@ -85,6 +85,7 @@ const WebsiteHome: React.FC = () => {
   };
 
   const handlePriceChange = (event: Event, newValue: number | number[]) => {
+    event.preventDefault();
     setPriceRange(newValue as [number, number]);
   };
   return (
@@ -124,7 +125,6 @@ const WebsiteHome: React.FC = () => {
                     min={priceRange[0]}
                     max={priceRange[1] + 300}
                     onChange={handlePriceChange}
-                    // valueLabelDisplay="on"
                     aria-labelledby="range-slider"
                   />
                   <div className="price-range-values">
