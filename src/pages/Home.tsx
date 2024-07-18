@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux-store/store";
 import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../Layout/Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +14,7 @@ import { Slider } from "@mui/material";
 import { ActionMeta, MultiValue, SingleValue } from "react-select";
 
 const WebsiteHome: React.FC = () => {
+  const searchTerm = useSelector((state: RootState) => state.search.searchTerm);
   const [productData, setProductData] = useState<ProductData[]>([]);
   const [authorOptions, setAuthorOptions] = useState<OptionType[]>([]);
   const [selectedAuthors, setSelectedAuthors] = useState<
@@ -88,6 +91,32 @@ const WebsiteHome: React.FC = () => {
     event.preventDefault();
     setPriceRange(newValue as [number, number]);
   };
+
+  const filteredProducts = productData
+    .filter(
+      (product) =>
+        searchTerm === "" ||
+        product.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.author?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category?.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter(
+      (product) =>
+        selectedAuthors.length === 0 ||
+        selectedAuthors.some((author) => author.value === product.author)
+    )
+    .filter(
+      (product) =>
+        selectedCategories.length === 0 ||
+        selectedCategories.some(
+          (category) => category.value === product.category
+        )
+    )
+    .filter(
+      (product) =>
+        Number(product.price) >= priceRange[0] &&
+        Number(product.price) <= priceRange[1]
+    );
   return (
     <Layout>
       <section className="productlisting-sec">
@@ -166,33 +195,13 @@ const WebsiteHome: React.FC = () => {
                 </div>
 
                 <div className="gridStart">
-                  {productData?.length > 0 &&
-                    productData
-                      .filter(
-                        (product) =>
-                          selectedAuthors.length === 0 ||
-                          selectedAuthors.some(
-                            (author) => author.value === product.author
-                          )
-                      )
-                      .filter(
-                        (product) =>
-                          selectedCategories.length === 0 ||
-                          selectedCategories.some(
-                            (category) => category.value === product.category
-                          )
-                      )
-                      .filter(
-                        (product) =>
-                          Number(product.price) >= priceRange[0] &&
-                          Number(product.price) <= priceRange[1]
-                      )
-                      .map((product, ind) => (
-                        <div className="itemBox" key={ind}>
-                          {product && <CardBox product={product} />}
-                          <div className="reckBg" />
-                        </div>
-                      ))}
+                  {filteredProducts.length > 0 &&
+                    filteredProducts.map((product, ind) => (
+                      <div className="itemBox" key={ind}>
+                        {product && <CardBox product={product} />}
+                        <div className="reckBg" />
+                      </div>
+                    ))}
                 </div>
               </div>
             </Col>

@@ -13,12 +13,34 @@ import {
 
 import { useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
+import { useDispatch } from "react-redux";
+import { setSearchTerm } from "../redux-store/features/searchSlice";
+import useDebounce from "../hooks/useDebounce";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState("");
+
   const [showNavbar, setShowNavbar] = useState(false);
+
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
+
+  const debouncedSearch = useDebounce((value: string) => {
+    dispatch(setSearchTerm(value));
+  }, 350); // Adjust the delay as needed
+
+  const handleSearch = () => {
+    dispatch(setSearchTerm(inputValue));
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    debouncedSearch(value);
+  };
+
   const cart = useSelector((state: RootState) => state.cart);
   return (
     <nav className="navbar">
@@ -37,8 +59,13 @@ const Header = () => {
               <FontAwesomeIcon icon={faChevronDown} className="arrowIcon" />
             </button>
           </div>
-          <input type="text" placeholder="Search Books | Author | genre" />
-          <button className="searchbtn">
+          <input
+            type="text"
+            placeholder="Search Books | Author | Catogory"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button className="searchbtn" onClick={handleSearch}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
