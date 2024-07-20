@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
 import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../Layout/Layout";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBorderAll, faBars } from "@fortawesome/free-solid-svg-icons";
+import { WindowOutlined, LineStyleOutlined, Filter } from "@mui/icons-material";
 import { getProductData } from "../api/index";
 import { CardBox } from "../components/CardBox";
 import { ProductData } from "../types/homeTypes";
@@ -26,7 +25,11 @@ const WebsiteHome: React.FC = () => {
   >([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
 
-  console.log(productData);
+  const [showFilterMob, setShowFilterMob] = useState(false);
+
+  const handleShowFilter = () => {
+    setShowFilterMob(!showFilterMob);
+  };
 
   const getData = async () => {
     const _data = await getProductData();
@@ -121,46 +124,57 @@ const WebsiteHome: React.FC = () => {
     <Layout>
       <section className="productlisting-sec">
         <Container>
-          <Row className="justify-content-between">
+          <Row className="justify-content-between g-0">
             <Col lg={2}>
-              <aside className="filterOptions">
-                <h2>Filter Option</h2>
+              <div className="filterSideWrap">
+                <button
+                  className="btn btn-purple d-block  d-lg-none d-xl-none"
+                  onClick={handleShowFilter}
+                >
+                  Filters <Filter />
+                </button>
+                <aside
+                  className={`filterOptions  ${showFilterMob ? "active" : ""}`}
+                >
+                  <h2>Filter Option</h2>
 
-                <div className="filterform">
-                  <h6>Shop by Author</h6>
-                  <SelectDropdown
-                    placeholder="Choose Authors"
-                    isMulti={true}
-                    value={selectedAuthors}
-                    options={authorOptions}
-                    onChange={handleAuthorChange}
-                  />
-                </div>
-                <div className="filterform">
-                  <h6>Shop by Categories</h6>
-                  <SelectDropdown
-                    placeholder="Choose Categories"
-                    isMulti={true}
-                    value={selectedCategories}
-                    options={categoryOptions}
-                    onChange={handleCategoryChange}
-                  />
-                </div>
-
-                <div className="filterform">
-                  <h6>Price Range</h6>
-                  <Slider
-                    value={priceRange}
-                    min={priceRange[0]}
-                    max={priceRange[1] + 300}
-                    onChange={handlePriceChange}
-                    aria-labelledby="range-slider"
-                  />
-                  <div className="price-range-values">
-                    <span>{priceRange[0]}</span> - <span>{priceRange[1]}</span>
+                  <div className="filterform">
+                    <h6>Shop by Author</h6>
+                    <SelectDropdown
+                      placeholder="Choose Authors"
+                      isMulti={true}
+                      value={selectedAuthors}
+                      options={authorOptions}
+                      onChange={handleAuthorChange}
+                    />
                   </div>
-                </div>
-              </aside>
+                  <div className="filterform">
+                    <h6>Shop by Categories</h6>
+                    <SelectDropdown
+                      placeholder="Choose Categories"
+                      isMulti={true}
+                      value={selectedCategories}
+                      options={categoryOptions}
+                      onChange={handleCategoryChange}
+                    />
+                  </div>
+
+                  <div className="filterform">
+                    <h6>Price Range</h6>
+                    <Slider
+                      value={priceRange}
+                      min={priceRange[0]}
+                      max={priceRange[1] + 300}
+                      onChange={handlePriceChange}
+                      aria-labelledby="range-slider"
+                    />
+                    <div className="price-range-values">
+                      <span>{priceRange[0]}</span> -{" "}
+                      <span>{priceRange[1]}</span>
+                    </div>
+                  </div>
+                </aside>
+              </div>
             </Col>
             <Col lg={9}>
               <div className="productGrid">
@@ -169,10 +183,10 @@ const WebsiteHome: React.FC = () => {
                   <div className="innerFilter">
                     <ul className="filterbyDate">
                       <li className="active">
-                        <button>Today</button>
+                        <button>All</button>
                       </li>
                       <li>
-                        <button>This Week</button>
+                        <button>Today</button>
                       </li>
                       <li>
                         <button>This Month</button>
@@ -181,12 +195,12 @@ const WebsiteHome: React.FC = () => {
                     <ul className="ViewChangeList">
                       <li className="active">
                         <button>
-                          <FontAwesomeIcon icon={faBorderAll} />
+                          <WindowOutlined />
                         </button>
                       </li>
                       <li>
                         <button>
-                          <FontAwesomeIcon icon={faBars} />
+                          <LineStyleOutlined />
                         </button>
                       </li>
                       <li>Newest</li>

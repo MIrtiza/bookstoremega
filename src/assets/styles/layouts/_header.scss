@@ -1,16 +1,21 @@
 
 .navbar {
-    padding: 10px 0;
+    @include ForMarginPadding(padding, rem(10), rem(0), rem(10), rem(0));
     background-color: $darkGrey;
     position: relative;
   }
-  
+  .header-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .logo {
     display: flex;
     align-items: center;
     .imgWrap{
-        width: 60px;
-        height: 40px;
+        width: rem(60);
+        height: rem(40);
         img{
             width: 100%;
     
@@ -18,13 +23,13 @@
     }
     span{
         display: inline-block;
-        margin-left: 8px;
-        font-size: 20px;
+        @include ForMarginPadding(margin, rem(0), rem(0), rem(0), rem(8));
+        font-size: rem(20);
         text-transform: uppercase;
         color: white;
         &::first-letter{
             color: $purple;
-            font-size: 34px;
+            font-size: rem(34);
         }
     }
    
@@ -70,7 +75,7 @@
         color: $purple;
       }
       .arrowIcon{
-        font-size: rem(12);
+        font-size: rem(17);
         position: absolute;
         @include RightToLeft(10px);
         top: 0;
@@ -97,11 +102,19 @@
     ul{
         padding: 0;
         margin: 0;
+        display: flex;
+        justify-content: space-between;
+        list-style-type: none;
+        align-items: center;
         li{
+          @include ForMarginPadding(margin, rem(0), rem(60), rem(0), rem(0));
             a{
 
                 color: $white;
                 position: relative;
+                font-size: rem(16);
+                font-weight: 400;
+                text-decoration: none;
                 svg{
                     color: $white;
                     font-size: 26px;
@@ -109,8 +122,8 @@
                 span{
                   color: $white;
                   position: absolute;
-                  top: rem(-10);
-                  @include RightToLeft(-16px);
+                  top: rem(-8);
+                  @include RightToLeft(-10px);
                   font-size: rem(12);
                   background: $danger;
                   width: rem(20);
@@ -120,83 +133,110 @@
                   align-items: center;
                   justify-content: center;
                 }
+                &.active{
+                  color: #574c4c;
+                  font-weight: 500;
+                  position: relative;
+                }
                 
+            }
+            &:last-child{
+              @include ForMarginPadding(margin, rem(0), rem(0), rem(0), rem(0));
             }
         }
     }
     .profileWrap{
         .imgWrap{
-            width: 35px;
-            height: 35px;
+            width: rem(35);
+            height: rem(35);
             border-radius: 50%;
             border: 1px solid $lightGrey;
             background-size: 100% 100%;
         }
     }
-  }
+  } 
   
-  .nav-elements ul {
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-  }
-  
-  .nav-elements ul li {
-    margin-right: 60px;
-  }
-  
-  .nav-elements ul a {
-    font-size: 16px;
-    font-weight: 400;
-    text-decoration: none;
-  }
-  
-  .nav-elements ul a.active {
-    color: #574c4c;
-    font-weight: 500;
-    position: relative;
-  }
-  
- 
-  
-  @media (max-width: 768px) {
-    
+  @media (min-width: 768px) and (max-width: 1023.98px){
+    .logo{
+      .imgWrap{
+        width: rem(36);
+        height: rem(32);
+      }
+      span{
+        font-size: rem(15);
+        &::first-letter{
+            font-size: rem(20);
+        }
+      }
+    }
+    .search-bar{
+      width: 100%;
+      @include ForMarginPadding(margin, rem(0), rem(20), rem(0), rem(20));
+    }
+    .nav-elements{
+      ul{
+        li{
+          @include ForMarginPadding(margin, rem(0), rem(30), rem(0), rem(0));
+        }
+      }
+    }
   }
   
   @media (max-width: 600px) {
+   
+    .header-wrap{
+      position: relative;
+      @include ForMarginPadding(padding, rem(10), rem(0), rem(40), rem(0));
+    }
     .menu-icon {
       display: block;
       cursor: pointer;
     }
+    .logo{
+      .imgWrap{
+        width: rem(36);
+        height: rem(32);
+      }
+      span{
+        font-size: rem(15);
+        &::first-letter{
+            font-size: rem(20);
+        }
+      }
+    }
   
     .nav-elements {
+      ul{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        li{
+          @include ForMarginPadding(margin, rem(0), rem(30), rem(0), rem(0));
+          a{
+            span{
+              width: rem(16);
+              height: rem(16);
+              font-size: rem(10);
+            }
+            svg{
+              font-size: rem(18);
+            }
+          }
+          .profileWrap{
+            .imgWrap{
+              width: rem(24);
+              height: rem(24);
+            }
+           
+          }
+        }
+      }
+    }
+    .search-bar{
       position: absolute;
-      right: 0;
-      top: 72px;
-      background-color: $darkGrey;
-      width: 0px;
-      height: calc(100vh - 72px);
-      transition: all 0.3s ease-in;
-      overflow: hidden;
-      flex-direction: column;
-      opacity: 0;
-      visibility: hidden;
+      bottom: 0;
+      width: 100%;
     }
   
-    .nav-elements.active {
-      width: 40%;
-      opacity: 1;
-      visibility: visible;
-    }
-  
-    .nav-elements ul {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .nav-elements ul li {
-      margin-right: unset;
-      margin: 22px 0;
-    }
   }
   
