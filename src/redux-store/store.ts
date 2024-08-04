@@ -9,7 +9,7 @@ const persistConfig = {
     storage,
   };
   
-  const persistedReducer = persistReducer(persistConfig, cartReducer);
+  const persistedReducer = persistReducer(persistConfig, cartReducer); // used for store the add to cart item , even after refresh
 
 const store = configureStore({
   reducer: {

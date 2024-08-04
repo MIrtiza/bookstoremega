@@ -1,0 +1,100 @@
+.cartPopup{
+    position: absolute;
+    @include RightToLeft(0);
+    top: 0;
+    background-color: $white;
+  
+    width: 20%;
+    height: 100%;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    .cartHead{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $borderColor;
+        @include ForMarginPadding(padding, rem(20), rem(20), rem(20), rem(20));
+    }
+    .totalItem{
+        @include ForMarginPadding(padding, rem(10), rem(20), rem(10), rem(20));
+    }
+    .cartBody{
+        @include ForMarginPadding(padding, rem(20), rem(20), rem(20), rem(20));
+        overflow-y: auto;
+        transition: 0.5s all;
+      
+        &::-webkit-scrollbar-track
+        {
+            -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.1);
+            background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar
+        {
+            width: 5px;
+            background-color: #F5F5F5;
+        }
+
+        
+        &:hover{
+            &::-webkit-scrollbar-thumb
+            {
+                background-color: #00000014;
+                border: 1px solid #5555550d;
+            }
+        }
+
+    }
+    .itemAdded{
+        display: flex;
+        @include ForMarginPadding(padding, rem(30), rem(0), rem(30), rem(0));
+        border-bottom: 1px solid $borderColor;
+        &:last-child{
+            border-bottom: 0;
+        }
+    }
+    .thumbWrap{
+        width: rem(100);
+        height: rem(100);
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    .itemDet{
+        @include ForMarginPadding(margin, rem(0), rem(0), rem(0), rem(20));
+        position: relative;
+        width: 100%;
+        .btnClose{
+            position: absolute;
+            @include RightToLeft(0);
+        }
+        span{
+            display: block;
+            font-size: rem(12)
+        }
+        input{
+            width: rem(50);
+           
+        }
+        input[type=number]::-webkit-inner-spin-button {
+            opacity: 1;
+          }
+    }
+    .cartFoot{
+        @include ForMarginPadding(padding, rem(20), rem(20), rem(20), rem(20));
+        @include ForMarginPadding(margin, auto, rem(0), rem(0), rem(0));
+    }
+
+    .navigatedBtns,.totalPrice{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include ForMarginPadding(margin, rem(20), rem(0), rem(20), rem(0));
+        button{
+            @include ForMarginPadding(margin, rem(0), rem(5), rem(0), rem(5));
+        }
+    }
+}

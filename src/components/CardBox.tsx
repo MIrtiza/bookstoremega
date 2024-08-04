@@ -3,6 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { ProductData } from "../types/homeTypes";
 import { TurnedInNot, TurnedIn, ShoppingCart } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
+
 import { addItem } from "../redux-store/features/cartSlice";
 import StarRating from "./StarRating";
 
@@ -24,6 +25,7 @@ export const CardBox: React.FC<CardBoxProps> = ({ product }) => {
   const handleAddToCart = () => {
     dispatch(addItem(product));
   };
+
   return (
     <>
       <Card className="cardBook">

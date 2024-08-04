@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductData } from '../../types/homeTypes';
 
+
+
 interface CartItem extends ProductData {
   quantity: number;
 }
@@ -9,6 +11,7 @@ interface CartState {
   items: CartItem[];
   totalQuantity: number;
   totalPrice: number;
+  
 }
 
 const initialState: CartState = {
@@ -29,7 +32,6 @@ const cartSlice = createSlice({
 
       if (existingItem) {
         existingItem.quantity++;
-        existingItem.price = (existingItem.price ?? 0) + newItemPrice; // Assuming price is per item
       } else {
         state.items.push({ ...newItem, quantity: 1 });
       }
@@ -38,7 +40,7 @@ const cartSlice = createSlice({
       state.totalPrice += newItemPrice;
     },
     removeItem(state, action: PayloadAction<number>) {
-      const id = action.payload;
+        const id = action.payload;
       const existingItem = state.items.find(item => item.id === id);
 
       if (existingItem) {
@@ -47,9 +49,27 @@ const cartSlice = createSlice({
         state.totalPrice -= existingItemPrice * existingItem.quantity;
         state.items = state.items.filter(item => item.id !== id);
       }
-    }
+    },
+    updateItemQuantity(state, action: PayloadAction<{ id: number; quantity: number }>) {
+        const { id, quantity } = action.payload;
+        const existingItem = state.items.find(item => item.id === id);
+  
+        if (existingItem) {
+            const existingItemPrice = existingItem.price ?? 0;
+            const difference = quantity - existingItem.quantity;
+          
+            existingItem.quantity = quantity;
+            state.totalQuantity += difference;
+            state.totalPrice += difference * existingItemPrice;
+          }
+      },
+      
+
   }
 });
 
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, updateItemQuantity } = cartSlice.actions;
+
+
+
 export default cartSlice.reducer;

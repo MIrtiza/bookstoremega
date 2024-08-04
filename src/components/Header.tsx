@@ -17,7 +17,11 @@ import { useDispatch } from "react-redux";
 import { setSearchTerm } from "../redux-store/features/searchSlice";
 import useDebounce from "../hooks/useDebounce";
 
-const Header = () => {
+interface HeaderProps {
+  onCartIconClick: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onCartIconClick }) => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
 
@@ -86,7 +90,7 @@ const Header = () => {
               </li>
 
               <li>
-                <NavLink to="/">
+                <NavLink to="/" onClick={onCartIconClick}>
                   <ShoppingCartOutlined />
                   <span> {cart.totalQuantity} </span>
                 </NavLink>
