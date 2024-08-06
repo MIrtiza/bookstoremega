@@ -1,0 +1,95 @@
+.cartBucketSec{
+    @include ForMarginPadding(padding, rem(32), rem(0), rem(32), rem(0));
+}
+
+.cartInfoWrapper{
+    display: flex;
+    @include ForMarginPadding(margin, rem(32), rem(0), rem(0), rem(0));
+  
+}
+
+.cartTable{
+    width: 70%;
+    @include ForMarginPadding(padding, rem(0), rem(15), rem(0), rem(15));
+    thead{
+        background-color: $lightPurple;
+        tr{
+            border: 1px solid $lightPurple;
+            th{
+                font-size: rem(16);
+                font-weight: 700;
+                text-transform: uppercase;
+                @include ForMarginPadding(padding, rem(10), rem(10), rem(10), rem(10));
+            }
+        }
+    }
+    tbody{
+    
+
+        tr{
+            @include ForMarginPadding(margin, rem(10), rem(0), rem(10), rem(0));
+            border: 1px solid $borderColor;
+            td{
+                @include ForMarginPadding(padding, rem(30), rem(15), rem(30), rem(15));
+                .quantityInput{
+                    input{
+                        width: rem(100);
+                    }
+                    input[type=number]::-webkit-inner-spin-button {
+                        opacity: 1;
+                      }
+                }
+            }
+        }
+    }
+    .thumbNtitle{
+        display: flex;
+        align-items: center;
+    }
+    .thumbWrap{
+        width: rem(100);
+        height: rem(80);
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+.orderSummary{
+    width: 30%;
+    @include ForMarginPadding(padding, rem(0), rem(20), rem(0), rem(20));
+
+    h6{
+        text-transform: uppercase;
+        font-weight: 800;
+        border-bottom: 2px solid $borderColor;
+        @include ForMarginPadding(padding, rem(10), rem(0), rem(13), rem(0));
+        @include ForMarginPadding(margin, rem(0), rem(0), rem(16), rem(0));
+    }
+    ul.sumDetail{
+        list-style: none;
+        @include ForMarginPadding(padding, rem(0), rem(0), rem(0), rem(0));
+        @include ForMarginPadding(margin, rem(0), rem(0), rem(50), rem(0));
+        li{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @include ForMarginPadding(padding, rem(20), rem(0), rem(20), rem(0));
+            @include ForMarginPadding(margin, rem(0), rem(0), rem(20), rem(0));
+            border-top: 1px solid $borderColor;
+            border-bottom: 1px solid $borderColor;
+            &:first-child{
+                border-top: 1px solid transparent; 
+            }
+            span{
+                font-weight: 600;
+            }
+        }
+    }
+    .navigatedBtns{
+        .btn{
+            @include ForMarginPadding(margin, rem(0), rem(0), rem(20), rem(0));
+        }
+    }
+}

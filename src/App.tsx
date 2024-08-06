@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import ProductDetail from "./pages/Detail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import Favorites from "./pages/Favorites";
+import Saved from "./pages/Saved";
 import NotFound from "./pages/NotFound";
 
 // dashboard
@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/saved" element={<Saved />} />
 
         {/* Protected Dashboard Route */}
         {/* <Route path="/dashboard/*" element={<DashboardRoutes />} /> */}
