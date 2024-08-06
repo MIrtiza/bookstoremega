@@ -11,14 +11,13 @@ import {
   Search,
 } from "@mui/icons-material";
 
-import { useSelector } from "react-redux";
 import { RootState } from "../redux-store/store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerm } from "../redux-store/features/searchSlice";
 import useDebounce from "../hooks/useDebounce";
 
 interface HeaderProps {
-  onCartIconClick: () => void;
+  onCartIconClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onCartIconClick }) => {
@@ -46,16 +45,17 @@ const Header: React.FC<HeaderProps> = ({ onCartIconClick }) => {
   };
 
   const cart = useSelector((state: RootState) => state.cart);
+  const savedItems = useSelector((state: RootState) => state.savedItems.items);
   return (
     <nav className="navbar">
       <div className="container">
         <div className="header-wrap">
-          <div className="logo">
+          <NavLink className="logo" to="/">
             <div className="imgWrap">
               <Image src={Logo} />
             </div>
             <span>BookStores</span>
-          </div>
+          </NavLink>
 
           <div className="search-bar">
             <div className="menudropdown">
@@ -83,17 +83,17 @@ const Header: React.FC<HeaderProps> = ({ onCartIconClick }) => {
           <div className={`nav-elements`}>
             <ul>
               <li>
-                <NavLink to="/">
+                <NavLink to="/saved">
                   <TurnedInNot />
-                  <span>0</span>
+                  <span> {savedItems.length} </span>
                 </NavLink>
               </li>
 
               <li>
-                <NavLink to="/" onClick={onCartIconClick}>
+                <button onClick={onCartIconClick}>
                   <ShoppingCartOutlined />
                   <span> {cart.totalQuantity} </span>
-                </NavLink>
+                </button>
               </li>
               <li>
                 <div className="profileWrap">

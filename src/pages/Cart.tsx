@@ -1,9 +1,11 @@
-
+import Layout from "../Layout/Layout";
 
 const Cart = () => {
   return (
-    <div>Cart</div>
-  )
-}
+    <Layout>
+      <div>Cart</div>
+    </Layout>
+  );
+};
 
-export default Cart
+export default Cart;

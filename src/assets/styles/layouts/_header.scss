@@ -108,13 +108,15 @@
         align-items: center;
         li{
           @include ForMarginPadding(margin, rem(0), rem(60), rem(0), rem(0));
-            a{
+            a,button{
 
                 color: $white;
                 position: relative;
                 font-size: rem(16);
                 font-weight: 400;
                 text-decoration: none;
+                border: 0;
+                background-color: transparent;
                 svg{
                     color: $white;
                     font-size: 26px;

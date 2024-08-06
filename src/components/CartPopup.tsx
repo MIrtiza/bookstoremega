@@ -6,6 +6,7 @@ import {
   removeItem,
   updateItemQuantity,
 } from "../redux-store/features/cartSlice";
+import { NavLink } from "react-router-dom";
 
 interface CartPopupProps {
   onClose: () => void;
@@ -28,7 +29,7 @@ const CartPopup: React.FC<CartPopupProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="cartPopup">
+    <div className="cartPopupContent">
       <div className="cartHead">
         <strong>Your Cart</strong>
         <button className="btnClose" onClick={onClose}>
@@ -83,8 +84,13 @@ const CartPopup: React.FC<CartPopupProps> = ({ onClose }) => {
           <span>Rs. {totalPrice}</span>
         </div>
         <div className="navigatedBtns">
-          <button className="btn btn-purple">Check out</button>
-          <button className="btn btnWhite">View Cart</button>
+          <NavLink to="/checkout" className="btn btn-purple">
+            Check out
+          </NavLink>
+
+          <NavLink to="/cart" className="btn btnWhite">
+            View Cart
+          </NavLink>
         </div>
       </div>
     </div>
